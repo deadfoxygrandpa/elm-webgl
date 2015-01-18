@@ -47,6 +47,12 @@ Elm.Native.WebGL.make = function(elm) {
 
   }
 
+  function textureSize(texture) {
+
+    return Tuple2(texture.img.width, texture.img.height);
+
+  }
+
   function entity(vert, frag, buffer, uniforms) {
 
     if (!buffer.guid) {
@@ -289,7 +295,7 @@ Elm.Native.WebGL.make = function(elm) {
             break;
           case gl.FLOAT_VEC2:
             gl.uniform2fv(uniformLocation, entity.uniforms[uniform.name]);
-            break;            
+            break;
           case gl.FLOAT_VEC3:
             gl.uniform3fv(uniformLocation, entity.uniforms[uniform.name]);
             break;
@@ -445,6 +451,7 @@ Elm.Native.WebGL.make = function(elm) {
   return elm.Native.WebGL.values = {
     unsafeCoerceGLSL:unsafeCoerceGLSL,
     loadTex:loadTex,
+    textureSize:textureSize,
     entity:F4(entity),
     webgl:F2(webgl)
   };
